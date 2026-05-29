@@ -6,8 +6,9 @@ ENV UV_LINK_MODE=copy
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 COPY pyproject.toml uv.lock /app/
-RUN /bin/uv sync --frozen --no-install-project
 COPY sdks/ /app/sdks/
+COPY honcho-cli/ /app/honcho-cli/
+RUN /bin/uv sync --frozen --no-install-project --no-group dev
 COPY src/ /app/src/
 COPY migrations/ /app/migrations/
 COPY scripts/ /app/scripts/

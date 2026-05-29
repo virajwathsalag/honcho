@@ -1,7 +1,3 @@
-dockerfile
-    Simplified Dockerfile for Railway Deployment
-    FROM python:3.13-slim-bookworm
-
     Install uv
     COPY --from=ghcr.io/astral-sh/uv:0.9.24 /uv /bin/uv
 

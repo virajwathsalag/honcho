@@ -49,6 +49,9 @@ COPY --chown=app:app config.toml* /app/
 # Switch to non-root user
 USER app
 
+COPY --chown=app:app start.sh /app/start.sh
+RUN chmod +x /app/start.sh
+
 EXPOSE 8000
 
-CMD ["fastapi", "run", "--host", "0.0.0.0", "src/main.py"]
+CMD ["/app/start.sh"]

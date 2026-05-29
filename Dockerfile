@@ -18,7 +18,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 # Install the project's dependencies using the lockfile and settings
-RUN --mount=type=cache,target=/root/.cache/uv \
+RUN --mount=type=cache,id=s/f07f4031-179c-40e9-82c0-f1aeb0614e3f-/root/.cache/uv,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
     uv sync --frozen --no-install-project --no-group dev
@@ -27,7 +27,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 COPY uv.lock pyproject.toml /app/
 
 # Sync the project
-RUN --mount=type=cache,target=/root/.cache/uv \
+RUN --mount=type=cache,id=s/f07f4031-179c-40e9-82c0-f1aeb0614e3f-/root/.cache/uv,target=/root/.cache/uv \
     uv sync --frozen --no-group dev
 
 # Place executables in the environment at the front of the path

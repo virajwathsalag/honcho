@@ -9,6 +9,8 @@ COPY pyproject.toml uv.lock /app/
 COPY sdks/ /app/sdks/
 COPY honcho-cli/ /app/honcho-cli/
 RUN /bin/uv sync --frozen --no-install-project --no-group dev
+ENV PATH="/app/.venv/bin:$PATH"
+ENV HOME=/app
 COPY src/ /app/src/
 COPY migrations/ /app/migrations/
 COPY scripts/ /app/scripts/
